@@ -24,6 +24,7 @@ namespace Snake_Game
             Grid = new GridValue[rows, cols];
             Dir = Direction.Right;
             AddSnake();
+            AddFood();
         }
 
         private void AddSnake()
@@ -48,6 +49,18 @@ namespace Snake_Game
                     }
                 }
             }
+        }
+
+        private void AddFood()
+        {
+            List<Position> empty = new List<Position>(EmptyPositions());
+
+            if(empty.Count == 0)  return;
+
+            Position pos = empty[random.Next(empty.Count)];
+            Grid[pos.Row, pos.Col] = GridValue.Food;
+
+
         }
 
     }
