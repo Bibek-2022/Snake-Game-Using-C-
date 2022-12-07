@@ -63,5 +63,30 @@ namespace Snake_Game
 
         }
 
+        public Position HeadPosition()
+        {
+            return snakePositions.First.Value;
+        }
+
+        public Position TailPosition()
+        {
+            return snakePositions.Last.Value;
+        }
+        public IEnumerable<Position> SnakePositions()
+        {
+            return snakePositions;
+        }
+        private void AddHead(Position pos)
+        {
+            snakePositions.AddFirst(pos);
+            Grid[pos.Row, pos.Col] = GridValue.Snake;
+        }
+
+        private void RemoveTail()
+        {
+            Position tail = snakePositions.Last.Value;
+            Grid[tail.Row, tail.Col] = GridValue.Empty;
+            snakePositions.RemoveLast();
+        }
     }
 }
