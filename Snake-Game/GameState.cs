@@ -88,5 +88,20 @@ namespace Snake_Game
             Grid[tail.Row, tail.Col] = GridValue.Empty;
             snakePositions.RemoveLast();
         }
+        public void ChangeDirection(Direction dir)
+        {
+            Dir = dir;
+
+        }
+
+        private bool OutsideGrid(Position pos)
+        {
+            return pos.Row < 0 || pos.Row >= Rows || pos.Col < 0 || pos.Col >= Cols;
+        }
+
+        private GridValue WillHit(Position newHeadPos)
+        {
+            return Grid[newHeadPos.Row, newHeadPos.Col];
+        }
     }
 }
